@@ -8,9 +8,9 @@ class Board():
 
         self.pxl_size = pixel_size
 
-        self.generate_canvas()
+        self.generate_board()
 
-    def generate_canvas(self):
+    def generate_board(self):
         #Logical grid
         self.grid = []
         for row in range(15):
