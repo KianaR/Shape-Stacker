@@ -1,12 +1,13 @@
 import pygame 
+import random
 
 #Initialisation
 pygame.init()
 pygame.font.init()
 
 #Screen sizes
-screen_width = 200
-screen_height = 350
+screen_width = 220
+screen_height = 330
 
 #Title
 title = "Tetris Online"
@@ -19,12 +20,18 @@ clear = (255, 255, 255, 0)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
+purple = (207, 52, 235)
+pink = (235, 52, 204)
+yellow = (209, 214, 49)
 
-colours = {
-    1: red,
-    2: green,
-    3: blue
-}
+colours = [
+    red,
+    green,
+    blue,
+    purple,
+    pink,
+    yellow
+]
 
 #shapes
 shapes = [
@@ -34,7 +41,13 @@ shapes = [
     [[1, 4, 5, 6], [1, 4, 5, 9], [4, 5, 6, 9], [1, 5, 6, 9]],
     [[1, 2, 5, 6]],
 ]
-    
+
+matrix = [
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15]
+]
 
 #Other
 FPS = 60

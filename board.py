@@ -13,17 +13,17 @@ class Board():
     def generate_canvas(self):
         #Logical grid
         self.grid = []
-        for row in range(16):
+        for row in range(15):
             self.grid.append([]) #List to represent each row
-            for column in range(11):
+            for column in range(10):
                 self.grid[row].append(0)
 
         self.grid_surface = pygame.Surface((screen_width, screen_height))
         self.grid_surface.fill(black)
 
         #Visual grid
-        for row in range (16):
-            for column in range (11):
+        for row in range (15):
+            for column in range (10):
                 self.update_pixel(row, column, white)
         
     def update_pixel(self, row, column, colour):
