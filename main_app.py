@@ -21,6 +21,7 @@ class Game(object):
     def __init__(self):
         global mouse_pos
         mouse_pos = pygame.mouse.get_pos()
+        self.move_shape_down = pygame.USEREVENT + 0
 
         screen.fill(white)
         self.pixel_size = 20
@@ -28,10 +29,36 @@ class Game(object):
 
         self.shape = Shape(0, 0, self.board)
 
+        pygame.time.set_timer(self.move_shape_down, 1750)
+
     def process_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return True      
+
+            if event.type == self.move_shape_down:
+                self.shape.move_down()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 3:
+                    pass
+
+            if event.type == pygame.KEYDOWN:
+                prev_x = None
+                prev_y = None
+
+                new_x = self.shape.x
+
+                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                    new_x -= 1
+                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                    new_x += 1
+
+                if new_x >= 0 and self.shape.check_x() + new_x <=10:
+                    prev_x = self.shape.x
+                    self.shape.x = new_x
+                
+                self.shape.update_board(prev_x, prev_y)
 
             # elif event.type == pygame.MOUSEBUTTONDOWN:
             #     mouse_x = event.pos[0]
@@ -45,6 +72,8 @@ class Game(object):
     
             #         self.board.update_pixel(row, column, colours[self.shape.colour])
 
+            # add dark mode after u add movement, detect whether cell has block on it or not if so dont change the bg colour. 
+            
             uimanager.process_events(event)
 
         return False

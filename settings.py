@@ -15,6 +15,7 @@ title = "Tetris Online"
 #Colours
 black = (0, 0, 0)
 white = (255, 255, 255)
+grey = (64, 63, 61)
 clear = (255, 255, 255, 0)
 
 red = (255, 0, 0)

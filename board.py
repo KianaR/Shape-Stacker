@@ -32,5 +32,7 @@ class Board():
                                 self.pxl_size,
                                 self.pxl_size])
 
+        self.grid[row][column] = "x"
+        
         self.screen.blit(self.grid_surface, (0,0))
         #pygame.display.update()
