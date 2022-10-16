@@ -29,7 +29,15 @@ class Game(object):
 
         self.shape = Shape(0, 0, self.board)
 
-        pygame.time.set_timer(self.move_shape_down, 1750)
+        pygame.time.set_timer(self.move_shape_down, 500)#1750
+
+    def new_shape(self):
+        for cell in shapes[self.shape.type][self.shape.rotation]:
+            x = cell%4 + self.shape.x
+            y = cell//4 + self.shape.y
+            self.board.grid[y][x] = "y"
+
+        self.shape = Shape(0, 0, self.board)
 
     def process_events(self):
         for event in pygame.event.get():
@@ -37,11 +45,13 @@ class Game(object):
                 return True      
 
             if event.type == self.move_shape_down:
-                self.shape.move_down()
+                shape_move = self.shape.move_down()
+                if shape_move == True: 
+                    self.new_shape()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 3:
-                    pass
+            # if event.type == pygame.MOUSEBUTTONDOWN:
+            #     if event.button == 3:
+            #         self.shape.rotate()
 
             if event.type == pygame.KEYDOWN:
                 prev_x = None
@@ -50,13 +60,16 @@ class Game(object):
                 new_x = self.shape.x
 
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+                    collision = self.shape.check_collisions("left")
                     new_x -= 1
                 elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+                    collision = self.shape.check_collisions("right")
                     new_x += 1
 
                 if new_x >= 0 and self.shape.check_x() + new_x <=10:
-                    prev_x = self.shape.x
-                    self.shape.x = new_x
+                    if collision != True:
+                        prev_x = self.shape.x
+                        self.shape.x = new_x
                 
                 self.shape.update_board(prev_x, prev_y)
 
@@ -82,7 +95,7 @@ class Game(object):
         pass
 
     def update_display(self, display):
-        uimanager.draw_ui(screen)
+        uimanager.draw_ui(display)
         pygame.display.update()
 
 
