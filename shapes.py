@@ -8,10 +8,11 @@ class Shape():
         self.x = x
         self.y = y
         self.board = board
-        self.type = random.randint(0, len(shapes) - 1)
+        #self.type = random.randint(0, len(shapes) - 1)
+        self.type = 4
         self.colour = colours[random.randint(0, len(colours)-1)]
         self.rotation = 0
-
+        
         self.furthest_point_x = self.check_x()
         self.furthest_point_y = self.check_y()
         self.x = random.randint(0, (10-self.furthest_point_x))
@@ -48,7 +49,7 @@ class Shape():
             else: 
                 x += 1
 
-            if self.board.grid[y][x] == "y":
+            if self.board.grid[y][x] != "x" and self.board.grid[y][x] !="":
                 return True
 
     def move_down(self):

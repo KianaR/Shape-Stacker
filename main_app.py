@@ -29,14 +29,9 @@ class Game(object):
 
         self.shape = Shape(0, 0, self.board)
 
-        pygame.time.set_timer(self.move_shape_down, 500)#1750
+        pygame.time.set_timer(self.move_shape_down, 250)#1750
 
     def new_shape(self):
-        for cell in shapes[self.shape.type][self.shape.rotation]:
-            x = cell%4 + self.shape.x
-            y = cell//4 + self.shape.y
-            self.board.grid[y][x] = "y"
-
         self.shape = Shape(0, 0, self.board)
 
     def process_events(self):
@@ -47,7 +42,13 @@ class Game(object):
             if event.type == self.move_shape_down:
                 shape_move = self.shape.move_down()
                 if shape_move == True: 
-                    self.new_shape()
+                    for cell in shapes[self.shape.type][self.shape.rotation]:
+                        x = cell%4 + self.shape.x
+                        y = cell//4 + self.shape.y
+                        self.board.update_pixel(y, x, self.shape.colour, False)
+
+                    self.board.full_row_check() # checks for full rows
+                    self.new_shape() # new shape starts
 
             # if event.type == pygame.MOUSEBUTTONDOWN:
             #     if event.button == 3:
