@@ -9,12 +9,13 @@ import pygame_gui
 from settings import *
 from board import *
 from shapes import *
+from tetris_ui import *
 
 #Initialisation
 pygame.init()
 pygame.font.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
-uimanager = pygame_gui.UIManager((screen_width, screen_height))
+uimanager = pygame_gui.UIManager((screen_width, screen_height), "theme.json")
 
 #Main game run
 class Game(object):
@@ -24,10 +25,14 @@ class Game(object):
         self.move_shape_down = pygame.USEREVENT + 0
 
         screen.fill(white)
+        self.game_ui = GameUI(screen, uimanager)
+
         self.pixel_size = 20
         self.board = Board(self.pixel_size, screen)
 
         self.shape = Shape(0, 0, self.board)
+
+        self.points = 0
 
         pygame.time.set_timer(self.move_shape_down, 250)#1750
 
@@ -47,7 +52,10 @@ class Game(object):
                         y = cell//4 + self.shape.y
                         self.board.update_pixel(y, x, self.shape.colour, False)
 
-                    self.board.full_row_check() # checks for full rows
+                    points_check = self.board.full_row_check() # checks for full rows
+                    if points_check and points_check > 0:
+                        self.points += points_check
+                        self.game_ui.update_points_label(self.points)
                     self.new_shape() # new shape starts
 
             # if event.type == pygame.MOUSEBUTTONDOWN:

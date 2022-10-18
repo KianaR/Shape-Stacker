@@ -18,7 +18,10 @@ class Board():
             for column in range(10):
                 self.grid[row].append(0)
 
-        self.grid_surface = pygame.Surface((screen_width, screen_height))
+        self.grid_width = 222 #20+2 (x10) +2
+        self.grid_height = (15*22) +2 
+
+        self.grid_surface = pygame.Surface((self.grid_width, self.grid_height))
         self.grid_surface.fill(black)
 
         #Visual grid
@@ -27,7 +30,6 @@ class Board():
                 self.update_pixel(row, column, white)
         
     def update_pixel(self, row, column, colour, moving=True):
-        print(colour)
         pygame.draw.rect(self.grid_surface, colour, [(pixel_margin + self.pxl_size) * column + pixel_margin, #Pixel size representing height and width
                                 (pixel_margin + self.pxl_size) * row + pixel_margin,
                                 self.pxl_size,
@@ -40,11 +42,12 @@ class Board():
         else: 
             self.grid[row][column] = colour
         
-        self.screen.blit(self.grid_surface, (0,0))
+        self.screen.blit(self.grid_surface, (screen_width / 2 - self.grid_width / 2, screen_height / 2 - self.grid_height / 2))
         #pygame.display.update()
 
     def full_row_check(self):
         filled_row = 0
+        filled_rows = 0
 
         for ind, row in enumerate(self.grid):
             filled = []
@@ -53,6 +56,7 @@ class Board():
                     filled.append(cell)
 
             if len(filled) == len(row):
+                filled_rows += 1
                 filled_row = ind+1
 
                 prev_row = []
@@ -63,5 +67,6 @@ class Board():
                             self.update_pixel(temp_row, cindex, prev_row[cindex], False)
                         else:
                             self.update_pixel(temp_row, cindex, white)
-                    print(self.grid)
                     prev_row = current_row
+            
+        return filled_rows*10

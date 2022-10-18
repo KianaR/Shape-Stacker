@@ -6,8 +6,8 @@ pygame.init()
 pygame.font.init()
 
 #Screen sizes
-screen_width = 220
-screen_height = 330
+screen_width = 330 #220
+screen_height = 440 #330
 
 #Title
 title = "Tetris Online"
