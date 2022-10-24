@@ -34,7 +34,10 @@ class Game(object):
 
         self.points = 0
 
-        pygame.time.set_timer(self.move_shape_down, 250)#1750
+        pygame.time.set_timer(self.move_shape_down, 250) #1750
+
+    def game_over(self):
+        pass
 
     def new_shape(self):
         self.shape = Shape(0, 0, self.board)
@@ -45,18 +48,23 @@ class Game(object):
                 return True      
 
             if event.type == self.move_shape_down:
-                shape_move = self.shape.move_down()
-                if shape_move == True: 
-                    for cell in shapes[self.shape.type][self.shape.rotation]:
-                        x = cell%4 + self.shape.x
-                        y = cell//4 + self.shape.y
-                        self.board.update_pixel(y, x, self.shape.colour, False)
+                if self.shape != False:
+                    shape_move = self.shape.move_down()
+                    if shape_move == True: 
+                        for cell in shapes[self.shape.type][self.shape.rotation]:
+                            x = cell%4 + self.shape.x
+                            y = cell//4 + self.shape.y
+                            self.board.update_pixel(y, x, self.shape.colour, False)
 
-                    points_check = self.board.full_row_check() # checks for full rows
-                    if points_check and points_check > 0:
-                        self.points += points_check
-                        self.game_ui.update_points_label(self.points)
-                    self.new_shape() # new shape starts
+                        points_check = self.board.full_row_check() # checks for full rows
+                        if points_check and points_check > 0:
+                            self.points += points_check
+                            self.game_ui.update_points_label(self.points)
+                        self.new_shape() # new shape starts
+
+            elif self.shape.can_generate == False:
+                self.game_over()
+                return True
 
             # if event.type == pygame.MOUSEBUTTONDOWN:
             #     if event.button == 3:
@@ -67,15 +75,18 @@ class Game(object):
                 prev_y = None
 
                 new_x = self.shape.x
+                moving = False
 
                 if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     collision = self.shape.check_collisions("left")
                     new_x -= 1
+                    moving = True
                 elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                     collision = self.shape.check_collisions("right")
                     new_x += 1
+                    moving = True
 
-                if new_x >= 0 and self.shape.check_x() + new_x <=10:
+                if new_x >= 0 and self.shape.check_x() + new_x <=10 and moving == True:
                     if collision != True:
                         prev_x = self.shape.x
                         self.shape.x = new_x

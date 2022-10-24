@@ -4,12 +4,11 @@
         "colours":
         {
             "dark_bg":"#ffffff",
-            "normal_text":"#000000",
-            "normal_border": "#ffffff"
+            "normal_text":"#000000"
         },
         "misc": {
-            "border_width": 1,
-            "shadow_width": 0,
+            "border_width": "0",
+            "shadow_width": "0",
             "text_horiz_alignment": "center"
         }
     }

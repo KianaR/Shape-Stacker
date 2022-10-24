@@ -13,10 +13,29 @@ class Shape():
         self.colour = colours[random.randint(0, len(colours)-1)]
         self.rotation = 0
         
-        self.furthest_point_x = self.check_x()
-        self.furthest_point_y = self.check_y()
-        self.x = random.randint(0, (10-self.furthest_point_x))
-        self.update_board()
+        self.can_generate = self.generate_shape()
+
+    def generate_shape(self):
+        fits = self.check_fits()
+        if fits != False:
+            self.furthest_point_x = self.check_x()
+            self.furthest_point_y = self.check_y()
+            self.x = random.randint(0, (10-self.furthest_point_x))
+            self.update_board()
+        else:
+            return False
+    
+    def check_fits(self):
+        rows = []
+        for cell in shapes[self.type][self.rotation]: # gets all rows the cells are in on grid
+            row_num = int(cell/4)
+            rows.append(row_num)
+        
+        rows_down = max(rows) # get last row shape in
+        for row in range(0, rows_down): # for each row between start of grid to highest row num, if x, return false
+            for cell in self.board.grid[row]:
+                if cell != "":
+                    return False
 
     def check_x(self):
         cell_indexes = []
@@ -48,8 +67,8 @@ class Shape():
                 x -= 1
             else: 
                 x += 1
-
-            if self.board.grid[y][x] != "x" and self.board.grid[y][x] !="":
+                
+            if x >= len(self.board.grid[y]) or (self.board.grid[y][x] != "x" and self.board.grid[y][x] !=""):
                 return True
 
     def move_down(self):

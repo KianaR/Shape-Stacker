@@ -18,7 +18,7 @@ class GameUI(TetrisUI):
         self.standard_ui_build()
 
     def standard_ui_build(self):
-        self.points_label = UITextBox("0", pygame.Rect((0, 0), (screen_width, 35)), self.manager, object_id=ObjectID(object_id="#transparent_label"))
+        self.points_label = UITextBox("0", pygame.Rect((0, 0), (screen_width, 35)), self.manager, object_id=ObjectID(object_id="#points_label"))
 
     def update_points_label(self, points):     
         self.points_label.set_text(str(points))
