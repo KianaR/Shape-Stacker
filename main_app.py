@@ -3,19 +3,13 @@
 #Tetris Online
 
 #Imports
-import pygame
-import pygame_gui
-
 from settings import *
 from board import *
 from shapes import *
 from tetris_ui import *
 
 #Initialisation
-pygame.init()
-pygame.font.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
-uimanager = pygame_gui.UIManager((screen_width, screen_height), "theme.json")
 
 #Main game run
 class Game(object):
@@ -37,7 +31,7 @@ class Game(object):
         pygame.time.set_timer(self.move_shape_down, 250) #1750
 
     def game_over(self):
-        pass
+       self.game_ui.game_over_screen()
 
     def new_shape(self):
         self.shape = Shape(0, 0, self.board)
@@ -48,7 +42,7 @@ class Game(object):
                 return True      
 
             if event.type == self.move_shape_down:
-                if self.shape != False:
+                if self.shape.can_generate != False:
                     shape_move = self.shape.move_down()
                     if shape_move == True: 
                         for cell in shapes[self.shape.type][self.shape.rotation]:
@@ -62,9 +56,13 @@ class Game(object):
                             self.game_ui.update_points_label(self.points)
                         self.new_shape() # new shape starts
 
-            elif self.shape.can_generate == False:
-                self.game_over()
-                return True
+                elif self.shape.can_generate == False:
+                    self.game_over()
+                    #return True
+
+            # elif self.shape.can_generate == False:
+            #     self.game_over()
+            #     return True
 
             # if event.type == pygame.MOUSEBUTTONDOWN:
             #     if event.button == 3:

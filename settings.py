@@ -1,9 +1,10 @@
 import pygame 
+import pygame_gui
 import random
 
 #Initialisation
 pygame.init()
-pygame.font.init()
+#pygame.font.init()
 
 #Screen sizes
 screen_width = 330 #220
@@ -11,6 +12,12 @@ screen_height = 440 #330
 
 #Title
 title = "Tetris Online"
+
+uimanager = pygame_gui.UIManager((screen_width, screen_height), "theme.json")
+
+uimanager.add_font_paths("Digital-Desolation-Plus",
+                         "assets/fonts/Digital-Desolation-Plus.otf")
+uimanager.preload_fonts([{'name': 'Digital-Desolation-Plus', 'html_size': 3, 'style': 'regular'}])
 
 #Colours
 black = (0, 0, 0)
@@ -52,5 +59,5 @@ matrix = [
 
 #Other
 FPS = 60
-font = pygame.font.SysFont("Poppins", 20)
+# font = pygame.font.SysFont("Poppins", 20)
 pixel_margin = 2
