@@ -31,7 +31,7 @@ class Game(object):
 
         self.points = 0
 
-        pygame.time.set_timer(self.move_shape_down, 250) #1750
+        pygame.time.set_timer(self.move_shape_down, 1250) #testing speed: 250
 
     def game_over(self):
        self.game_ui.game_over_screen()

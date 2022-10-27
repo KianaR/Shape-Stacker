@@ -8,8 +8,8 @@ class Shape():
         self.x = x
         self.y = y
         self.board = board
-        #self.type = random.randint(0, len(shapes) - 1)
-        self.type = 4
+        self.type = random.randint(0, len(shapes) - 1)
+        #testing: self.type = 4
         self.colour = colours[random.randint(0, len(colours)-1)]
         self.rotation = 0
         
