@@ -1,6 +1,6 @@
 #UI management class
 import pygame_gui
-from pygame_gui.elements import UITextBox, UIPanel
+from pygame_gui.elements import UITextBox, UIPanel, UILabel, UIButton
 from pygame_gui.core import ObjectID
 
 from settings import *
@@ -25,4 +25,8 @@ class GameUI(TetrisUI):
         self.points_label.set_text(text)
 
     def game_over_screen(self):
-        popup_box = UIPanel(pygame.Rect((0, 0), (screen_width, 75)), 1, self.manager, object_id=ObjectID(object_id="#gameover_popup"))
+        popup_box = UIPanel(pygame.Rect((0, screen_height/2-75/2), (screen_width, 150)), 1, self.manager, object_id=ObjectID(object_id="#gameover_popup"))
+        label = UILabel((pygame.Rect((0, 0), (screen_width, 75))), "Game Over!", self.manager, popup_box, object_id=ObjectID(object_id="#gameover_lbl"))
+
+        btn_holder = UIPanel(pygame.Rect((0, 100), (screen_width, 35)), 2, self.manager, container=popup_box, object_id=ObjectID(object_id="#exit_btn_holder"))
+        self.exit_btn = UIButton((pygame.Rect((screen_width/2-75/2, 0), (75, 35))), "Exit", self.manager, btn_holder, object_id=ObjectID(object_id="#exit_btn", class_id="@btn"))

@@ -39,7 +39,11 @@ class Game(object):
     def process_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return True      
+                return True   
+
+            if event.type == pygame_gui.UI_BUTTON_PRESSED:
+                if event.ui_element == self.game_ui.exit_btn:
+                    return True
 
             if event.type == self.move_shape_down:
                 if self.shape.can_generate != False:
