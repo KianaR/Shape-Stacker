@@ -8,10 +8,10 @@ pygame.init()
 
 #Screen sizes
 screen_width = 330 #220
-screen_height = 440 #330
+screen_height = 500 #330
 
 #Title
-title = "Tetris Online"
+title = "Tetris Enhanced"
 
 uimanager = pygame_gui.UIManager((screen_width, screen_height), "theme.json")
 
@@ -24,6 +24,11 @@ black = (0, 0, 0)
 white = (255, 255, 255)
 grey = (64, 63, 61)
 clear = (255, 255, 255, 0)
+
+primary = (0, 150, 198) #0096c6
+secondary = (215, 217, 206) #d7d9ce
+highlight = (15, 184, 245) #0fb8f5
+dark_accent = (31, 48, 101) #1f3065
 
 red = (255, 0, 0)
 green = (0, 255, 0)

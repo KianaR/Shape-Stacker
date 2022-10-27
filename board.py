@@ -21,8 +21,11 @@ class Board():
         self.grid_width = 222 #20+2 (x10) +2
         self.grid_height = (15*22) +2 
 
+        self.grid_under_surface = pygame.Surface((self.grid_width+20, self.grid_height+20))
+        self.grid_under_surface.fill(secondary)
+
         self.grid_surface = pygame.Surface((self.grid_width, self.grid_height))
-        self.grid_surface.fill(black)
+        self.grid_surface.fill(dark_accent)
 
         #Visual grid
         for row in range (15):
@@ -42,6 +45,7 @@ class Board():
         else: 
             self.grid[row][column] = colour
         
+        self.screen.blit(self.grid_under_surface, ((screen_width / 2)- (self.grid_width+20) / 2, (screen_height / 2) - ((self.grid_height+20) / 2)))
         self.screen.blit(self.grid_surface, (screen_width / 2 - self.grid_width / 2, screen_height / 2 - self.grid_height / 2))
         #pygame.display.update()
 

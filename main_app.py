@@ -9,6 +9,9 @@ from shapes import *
 from tetris_ui import *
 
 #Initialisation
+logo = pygame.image.load("assets\imgs\icon.png")
+pygame.display.set_icon(logo)
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 #Main game run
@@ -18,7 +21,7 @@ class Game(object):
         mouse_pos = pygame.mouse.get_pos()
         self.move_shape_down = pygame.USEREVENT + 0
 
-        screen.fill(white)
+        screen.fill(primary)
         self.game_ui = GameUI(screen, uimanager)
 
         self.pixel_size = 20

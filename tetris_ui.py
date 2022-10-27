@@ -18,7 +18,7 @@ class GameUI(TetrisUI):
         self.standard_ui_build()
 
     def standard_ui_build(self):
-        self.points_label = UITextBox('<font face=Digital-Desolation-Plus size=3>0</font>', pygame.Rect((0, 0), (screen_width, 50)), self.manager, object_id=ObjectID(object_id="#points_label"))
+        self.points_label = UITextBox('<font face=Digital-Desolation-Plus size=3>0</font>', pygame.Rect((0, 0), (screen_width, 75)), self.manager, object_id=ObjectID(object_id="#points_label"))
 
     def update_points_label(self, points):  
         text = "<font face=Digital-Desolation-Plus size=3>" + str(points) + "</font>"
@@ -29,4 +29,4 @@ class GameUI(TetrisUI):
         label = UILabel((pygame.Rect((0, 0), (screen_width, 75))), "Game Over!", self.manager, popup_box, object_id=ObjectID(object_id="#gameover_lbl"))
 
         btn_holder = UIPanel(pygame.Rect((0, 100), (screen_width, 35)), 2, self.manager, container=popup_box, object_id=ObjectID(object_id="#exit_btn_holder"))
-        self.exit_btn = UIButton((pygame.Rect((screen_width/2-75/2, 0), (75, 35))), "Exit", self.manager, btn_holder, object_id=ObjectID(object_id="#exit_btn", class_id="@btn"))
+        self.exit_btn = UIButton((pygame.Rect((screen_width/2-75/2, 0), (80, 35))), "Exit", self.manager, btn_holder, object_id=ObjectID(class_id="@btn"))

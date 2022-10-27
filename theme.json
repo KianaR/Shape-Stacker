@@ -2,8 +2,8 @@
     "#points_label":
     {
         "colours": {
-            "dark_bg":"#ffffff",
-            "normal_text":"#000000"
+            "dark_bg":"#0096c6",
+            "normal_text":"#ffffff"
         },
         "misc": {
             "border_width": "0",
@@ -28,21 +28,27 @@
     "#gameover_lbl":
     {
         "colours": {
-            "dark_bg":"#7a7985",
-            "normal_text":"#ffffff"
+            "dark_bg":"#1f3065",
+            "normal_text":"#ffffff",
+            "text_shadow":"#0096c6"
         },
         "font": {
             "name": "Digital-Desolation-Plus",
             "size": "20",
             "regular_path": "assets/fonts/Digital-Desolation-Plus.otf"
+        },
+        "misc": {
+            "text_shadow_size": "1"
         }
     },
 
     "@btn":
     {
         "colours": {
-            "dark_bg":"#7a7985",
-            "normal_text":"#ffffff"
+            "normal_bg":"#1f3065",
+            "normal_text":"#ffffff",
+            "normal_border":"#d7d9ce",
+            "normal_text_shadow": "#0096c6"
         },
         "font": {
             "name": "Digital-Desolation-Plus",
@@ -50,8 +56,11 @@
             "regular_path": "assets/fonts/Digital-Desolation-Plus.otf"
         },
         "misc": {
+            "shape": "rounded_rectangle",
+            "shape_corner_radius": "20",
             "border_width": "0",
-            "shadow_width": "0"
+            "shadow_width": "0",
+            "text_shadow_size": "0"
         }
     },
 
