@@ -31,7 +31,7 @@ class Game(object):
 
         self.points = 0
 
-        pygame.time.set_timer(self.move_shape_down, 1250) #testing speed: 250
+        pygame.time.set_timer(self.move_shape_down, 250) #testing speed: 250, non-test:1250
 
     def game_over(self):
        self.game_ui.game_over_screen()
@@ -45,7 +45,7 @@ class Game(object):
                 return True   
 
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == self.game_ui.exit_btn:
+                if self.game_ui.exit_btn.object_ids[0] + "." + self.game_ui.exit_btn.object_ids[1] + ".@btn" == event.ui_object_id:
                     return True
 
             if event.type == self.move_shape_down:

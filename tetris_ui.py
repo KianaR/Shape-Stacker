@@ -1,5 +1,4 @@
 #UI management class
-import pygame_gui
 from pygame_gui.elements import UITextBox, UIPanel, UILabel, UIButton
 from pygame_gui.core import ObjectID
 
