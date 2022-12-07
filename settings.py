@@ -21,7 +21,7 @@ uimanager.preload_fonts([{'name': 'Digital-Desolation-Plus', 'html_size': 3, 'st
 
 #Colours
 black = (0, 0, 0)
-white = (255, 255, 255)
+white = (255, 255, 255, 125)
 grey = (64, 63, 61)
 clear = (255, 255, 255, 0)
 

@@ -12,6 +12,8 @@ from tetris_ui import *
 logo = pygame.image.load("assets\imgs\icon.png")
 pygame.display.set_icon(logo)
 
+bg = pygame.image.load("assets\imgs\mainbg.png")
+
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 #Main game run
@@ -22,6 +24,7 @@ class Game(object):
         self.move_shape_down = pygame.USEREVENT + 0
 
         screen.fill(primary)
+        screen.blit(bg, (0,0))
         self.game_ui = GameUI(screen, uimanager)
 
         self.pixel_size = 20

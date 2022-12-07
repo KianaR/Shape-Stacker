@@ -21,10 +21,8 @@ class Board():
         self.grid_width = 222 #20+2 (x10) +2
         self.grid_height = (15*22) +2 
 
-        self.grid_under_surface = pygame.Surface((self.grid_width+20, self.grid_height+20))
-        self.grid_under_surface.fill(secondary)
-
-        self.grid_surface = pygame.Surface((self.grid_width, self.grid_height))
+        self.grid_surface = pygame.Surface((self.grid_width, self.grid_height), pygame.SRCALPHA)
+        self.grid_surface.fill(0)
         self.grid_surface.fill(dark_accent)
 
         #Visual grid
@@ -33,6 +31,7 @@ class Board():
                 self.update_pixel(row, column, white)
         
     def update_pixel(self, row, column, colour, moving=True):
+        self.grid_surface.fill(0)
         pygame.draw.rect(self.grid_surface, colour, [(pixel_margin + self.pxl_size) * column + pixel_margin, #Pixel size representing height and width
                                 (pixel_margin + self.pxl_size) * row + pixel_margin,
                                 self.pxl_size,
@@ -45,7 +44,6 @@ class Board():
         else: 
             self.grid[row][column] = colour
         
-        self.screen.blit(self.grid_under_surface, ((screen_width / 2)- (self.grid_width+20) / 2, (screen_height / 2) - ((self.grid_height+20) / 2)))
         self.screen.blit(self.grid_surface, (screen_width / 2 - self.grid_width / 2, screen_height / 2 - self.grid_height / 2))
         #pygame.display.update()
 
