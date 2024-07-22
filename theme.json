@@ -2,7 +2,7 @@
     "#points_label":
     {
         "colours": {
-            "dark_bg":"#0096c6",
+            "dark_bg":"#0096c600",
             "normal_text":"#ffffff"
         },
         "misc": {
