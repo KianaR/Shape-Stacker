@@ -45,7 +45,6 @@ class Board():
             self.grid[row][column] = colour
         
         self.screen.blit(self.grid_surface, (screen_width / 2 - self.grid_width / 2, screen_height / 2 - self.grid_height / 2))
-        #pygame.display.update()
 
     def full_row_check(self):
         filled_row = 0

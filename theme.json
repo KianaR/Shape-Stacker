@@ -2,7 +2,7 @@
     "#points_label":
     {
         "colours": {
-            "dark_bg":"#0096c600",
+            "dark_bg":"#a373de",
             "normal_text":"#ffffff"
         },
         "misc": {
@@ -28,9 +28,9 @@
     "#gameover_lbl":
     {
         "colours": {
-            "dark_bg":"#1f3065",
+            "dark_bg":"#a373de",
             "normal_text":"#ffffff",
-            "text_shadow":"#0096c6"
+            "text_shadow":"#db487a"
         },
         "font": {
             "name": "Digital-Desolation-Plus",
@@ -45,10 +45,10 @@
     "@btn":
     {
         "colours": {
-            "normal_bg":"#1f3065",
+            "normal_bg":"#db487a",
             "normal_text":"#ffffff",
-            "normal_border":"#d7d9ce",
-            "normal_text_shadow": "#0096c6"
+            "normal_border":"#ffffff",
+            "normal_text_shadow": "#ffffff"
         },
         "font": {
             "name": "Digital-Desolation-Plus",

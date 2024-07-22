@@ -9,7 +9,6 @@ class Shape():
         self.y = y
         self.board = board
         self.type = random.randint(0, len(shapes) - 1)
-        #testing: self.type = 4
         self.colour = colours[random.randint(0, len(colours)-1)]
         self.rotation = 0
         
@@ -126,20 +125,6 @@ class Shape():
                         x = self.x + row.index(cell)
                         y = previous_y + matrix.index(row)
                         self.board.update_pixel(y, x, white)
-
-        # x = self.x
-        # y = self.y
-        # if previous_x != None:
-        #     x = previous_x
-        # if previous_y != None:
-        #     y = previous_y
-
-        # for cell in shape:
-        #     for row in matrix:
-        #         if cell in row:
-        #             x = x + row.index(cell)
-        #             y = y + matrix.index(row)
-        #             self.board.update_pixel(y, x, white)
 
         for cell in shape:
             for row in matrix:

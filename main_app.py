@@ -68,11 +68,6 @@ class Game(object):
 
                 elif self.shape.can_generate == False:
                     self.game_over()
-                    #return True
-
-            # elif self.shape.can_generate == False:
-            #     self.game_over()
-            #     return True
 
             # if event.type == pygame.MOUSEBUTTONDOWN:
             #     if event.button == 3:

@@ -37,14 +37,14 @@ purple = (207, 52, 235)
 pink = (235, 52, 204)
 yellow = (209, 214, 49)
 
-colours = [
-    red,
-    green,
-    blue,
-    purple,
-    pink,
-    yellow
-]
+col1 = (219, 72, 122)
+col2 = (163, 115, 222)
+col3 = (35, 213, 219)
+col4 = (227, 104, 194)
+col5 = (132, 209, 165)
+col6 = (75, 182, 214)
+
+colours = [col1, col2, col3, col4, col5, col6]
 
 #shapes
 shapes = [
@@ -64,5 +64,4 @@ matrix = [
 
 #Other
 FPS = 60
-# font = pygame.font.SysFont("Poppins", 20)
 pixel_margin = 2
